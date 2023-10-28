@@ -29,12 +29,11 @@ def create_circle(vert_coordinates, vert_count):
     verts = vert_coordinates
     edges = []
 
-    for i in range(vert_count - 1):
+    for i in range(vert_count):
         current_vert_index = i
-        next_vert_index = i + 1
+        next_vert_index = (i + 1) % vert_count
         edges.append((current_vert_index, next_vert_index))
 
-    edges.append((vert_count - 1, 0))
 
     faces = []
 
@@ -57,4 +56,3 @@ radius = 2
 vert_coordinates = get_circle_vert_coordinates(vert_count, radius)
 
 mesh_obj = create_circle(vert_coordinates, vert_count)
-mesh_obj.rotation_euler.x = math.radians(90)
